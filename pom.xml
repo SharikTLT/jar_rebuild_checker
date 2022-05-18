@@ -47,7 +47,7 @@
 							<goal>copy</goal>
 						</goals>
 						<configuration>
-							<sourceFile>target/${artifactId}-${version}.jar</sourceFile>
+							<sourceFile>target/${project.artifactId}-${project.version}.jar</sourceFile>
 							<destinationFile>bin/app.jar</destinationFile>
 						</configuration>
 					</execution>
