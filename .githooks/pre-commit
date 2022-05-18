@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ "$JAVA_HOME" == "" ]
+  then
+  echo "No JAVA_HOME env found, skip app.jar version check"
+  exit 0
+fi
+
+lastTag=$(git describe --tags --abbrev=0)
+currentBuild=$(java -jar bin/app.jar -v)
+
+if [ "$lastTag" == "$currentBuild" ]
+  then
+  echo "Stop! lastTag = $lastTag equals to current = $currentBuild"
+  echo "May be forgot to maven install?"
+  exit 1
+fi
+
+echo "Ok, continue"
+echo "$currentBuild" > target/currentBuild.txt
